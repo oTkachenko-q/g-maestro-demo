@@ -1,0 +1,24 @@
+appId: com.geniusee.charity.stage
+jsEngine: graaljs
+---
+- launchApp
+- tapOn: "Забули пароль?"
+- assertVisible: "Зміна паролю"
+- tapOn:
+    below: "Електронна пошта"
+- inputText: "7bfht.testuserex@inbox.testmail.app"
+- hideKeyboard
+- tapOn: "Далі"
+- runScript: ../common/scripts/get_verification_code.js
+- tapOn:
+    below: "Код підтвердження"
+- inputText: ${output.code}
+- tapOn: "eyeInvisible"
+- tapOn:
+    below: "Новий пароль"
+- inputText: "Test12345"
+- tapOn: "Змінити пароль"
+- assertVisible: "Пароль змінено."
+- tapOn: "ОК"
+- assertVisible: "Вхід"
+- stopApp

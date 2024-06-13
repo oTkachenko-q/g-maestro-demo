@@ -1,0 +1,21 @@
+appId: com.geniusee.charity.stage
+env:
+    EMAIL: o.tkachenko@geniusee.com
+    PWD: Test1234
+---
+- launchApp
+- runScript: ../elements/ios/auth.js
+- runScript: ../elements/ios/requests.js
+- assertVisible: ${output.auth.signInFormTitle}
+- tapOn:
+    below: ${output.auth.emailFieldLabel}
+- inputText: ${EMAIL}
+- tapOn: ${output.auth.showHidePwdIcon}
+- tapOn:
+    below: ${output.auth.pwdFieldLabel}
+- inputText: ${PWD}
+- tapOn: ${output.auth.loginBtn}
+- assertVisible: ${output.requests.openRequestsTitle}
+- tapOn: "Профіль"
+- tapOn: "Вийти"
+- stopApp

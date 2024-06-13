@@ -1,0 +1,30 @@
+appId: com.geniusee.charity.stage
+---
+- launchApp
+- assertVisible:
+    text: "Вхід"
+- tapOn:
+    text: "Створити акаунт"
+- assertVisible:
+    text: "Реєстрація"
+- tapOn:
+    below: "Ім'я"
+- inputText: "Oleksandr"
+- tapOn:
+    below: "Номер телефону"
+- inputText: "+380000000000"
+- tapOn:
+    below: "Електронна пошта"
+- runScript: ../common/scripts/unique_email.js
+- inputText: ${output.unique_email.result}
+- tapOn: "eyeInvisible"
+- tapOn:
+    below: "Пароль"
+- inputText: "Test1234"
+- hideKeyboard
+- tapOn: "Створити акаунт"
+- assertVisible:
+    text: "Відкриті запити"
+- tapOn: "Профіль"
+- tapOn: "Вийти"
+- stopApp
